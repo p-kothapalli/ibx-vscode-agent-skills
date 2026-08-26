@@ -1,0 +1,31 @@
+vertical: HLS
+name: Health & Life Sciences
+prefix:
+  omniscript: HLS_
+  dataraptors: HLSDR
+  integration_procedures: HLS_
+key_objects:
+  - Patient
+  - CarePlan
+  - CareProgram
+  - CareTeamMember
+  - Condition
+  - Medication
+  - Observation
+  - MedicationStatement
+  - CareProviderFacilitySpecialty
+  - HealthcareProvider
+  - HealthcareFacility
+key_flows:
+  - Patient Enrollment
+  - Care Plan Creation
+  - Program Enrollment
+  - Outcome Tracking
+  - Clinical Workflows
+  - Patient Assessment
+  - Treatment Planning
+care_model: Patient-centric
+naming:
+  omniscript: "HLS_[FlowName]_English"
+  dataraptors: "HLSDR[Action][Object]"
+  integration_procedures: "HLS_[Name]"

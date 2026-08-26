@@ -1,0 +1,29 @@
+vertical: Insurance
+name: Vlocity Insurance
+prefix:
+  omniscript: INS_
+  dataraptors: INSDR
+  integration_procedures: INS_
+key_objects:
+  - InsurancePolicy
+  - InsurancePolicyAsset
+  - Claim
+  - ClaimItem
+  - Quote
+  - QuoteLineItem
+  - InsurancePolicyCoverage
+  - InsurancePolicyParticipant
+  - Account
+  - Contact
+key_flows:
+  - Policy Issuance
+  - Quote Generation
+  - Claim Intake
+  - Claim Adjudication
+  - Policy Renewal
+  - Endorsement Processing
+  - Payment Allocation
+naming:
+  omniscript: "INS_[FlowName]_English"
+  dataraptors: "INSDR[Action][Object]"
+  integration_procedures: "INS_[Name]"

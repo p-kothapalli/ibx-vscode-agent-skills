@@ -1,0 +1,18 @@
+{
+  "skills": ["lsc-user-story-architect"],
+  "mode": "New Feature",
+  "sub_domain": "Commercial",
+  "query": "Create an LSC user story: a field sales rep records a sample drop to an HCP during a visit, captures the HCP signature, and the rep's on-hand inventory is decremented. Block over-disbursement and disbursement to an HCP whose license is expired. Priority P0.",
+  "files": [],
+  "expected_behavior": [
+    "Asks the LSC sub-domain first and clarifying questions (via structured multiple-choice) before generating any story content",
+    "Uses the concrete persona 'Field Sales Representative'; the HCP is treated as the subject of the action, not the login persona",
+    "Acceptance Criteria use Pattern A (Given/When/Then), with the happy path and BOTH negative paths (over-disbursement, ineligible/expired-license HCP) as separate ACs, one When each",
+    "The 'records are created/updated' outcome includes a Pattern E block enumerating every object and every field (Sample Transaction create + Product Item on-hand update), with no 'etc.'",
+    "No Apex class names, IP versions/step numbers, SOQL, or API field names appear inside any Given/When/Then/And line",
+    "Includes a '## Technical Implementation (high-level)' section after the ACs naming components and cross-referencing AC numbers",
+    "Verifies standard LSC objects via salesforce-docs (or marks them proposed) and never invents *__c field names; greenfield custom components marked Proposed",
+    "Includes Definition of done (incl. >=85% Apex coverage since Apex logic is implied) and an Estimated Effort table labelled AI-estimated",
+    "Proposes saving the story under requirements/<PascalCase>.md"
+  ]
+}

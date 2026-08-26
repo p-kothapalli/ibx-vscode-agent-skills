@@ -1,0 +1,17 @@
+{
+  "skills": ["lsc-user-story-architect"],
+  "mode": "New Feature",
+  "sub_domain": "Commercial",
+  "query": "Create an LSC user story to add two fields to the HCP account: sample eligibility (Eligible/Not Eligible/Needs Review) and the date eligibility was last evaluated, with field-level security for commercial admin, field sales, and compliance read-only permission sets. Priority P1.",
+  "files": [],
+  "expected_behavior": [
+    "Uses a concrete business persona (e.g. 'Compliance Specialist' or 'Commercial Operations Analyst'), never 'user'/'business user', and does not use 'HCP' as the login persona",
+    "Acceptance Criteria use Pattern B (field creation) as structured bullets — NOT forced into Given/When/Then — with API name, object, type, label, track history, required",
+    "Includes a Pattern C permission-set/FLS acceptance criterion split into Object level and Field level for each named permission set",
+    "Field API names use a consistent LSC_ prefix and are proposed on the standard Account object rather than inventing a new custom object",
+    "Includes a '## Technical Implementation (high-level)' section after the ACs",
+    "Includes Definition of done checklist and an Estimated Effort table with S/M/L sizing labelled AI-estimated",
+    "Raises a Clarification Question about the org's actual permission-set names / prefix if unverified",
+    "Proposes saving the story under requirements/<PascalCase>.md"
+  ]
+}

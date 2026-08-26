@@ -1,0 +1,10 @@
+Internal Use Only — IBX / Salesforce
+
+Copyright (c) 2026 Salesforce IBX team contributors.
+
+This repository contains IBX org-specific agent skills derived from internal
+Salesforce source (git.soma.salesforce.com/pkothapalli/IBXEnhancements) and from
+the public forcedotcom/sf-skills project (see ATTRIBUTION.md).
+
+Redistribution outside IBX / Salesforce is not permitted without approval.
+Keep this GitHub repository private.

@@ -1,0 +1,15 @@
+{
+  "skills": ["user-story-architect"],
+  "mode": "New Feature",
+  "vertical": "PNM",
+  "query": "Draft a user story to add two new tracked fields (Last Reassessment Date, Last Reassessed By) to the Ancillary Assessment object, with field-level security for the credentialing permission sets. Priority P1.",
+  "files": [],
+  "expected_behavior": [
+    "Uses the concrete persona 'Ancillary Cred Specialist' (acting as data steward is acceptable), never 'user' or 'developer'",
+    "Field-creation acceptance criteria use Pattern B (structured bullets: API Name, Object, Type, Label, Track History, Required) and do NOT force a Given/When/Then shape",
+    "Permission-set / FLS acceptance criteria use Pattern C (Object-level and Field-level split per permission set)",
+    "Confirms the Ancillary Assessment object / field API names against the codebase (code-review-graph or describe) rather than inventing PRM_* names, and flags any that cannot be verified",
+    "Includes a '## Technical Implementation (high-level)' section, a Definition of done that covers deployment + FLS, and an Estimated Effort table",
+    "Does not include unrelated behavioural ACs when the story is purely metadata creation"
+  ]
+}

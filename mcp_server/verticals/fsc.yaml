@@ -1,0 +1,29 @@
+vertical: FSC
+name: Financial Services Cloud
+prefix:
+  omniscript: FSC_
+  dataraptors: FSCDR
+  integration_procedures: FSC_
+key_objects:
+  - FinancialAccount
+  - FinancialGoal
+  - FinancialHolding
+  - Securities
+  - WealthAppConfig
+  - ChartsOfAccounts
+  - FinancialAccountRole
+  - FinancialAccountTransaction
+  - BillingStatement
+  - Claim
+key_flows:
+  - Client Onboarding
+  - Financial Planning
+  - Account Opening
+  - Wealth Management Review
+  - Loan Origination
+  - Client Life Event
+  - KYC Verification
+naming:
+  omniscript: "FSC_[FlowName]_English"
+  dataraptors: "FSCDR[Action][Object]"
+  integration_procedures: "FSC_[Name]"

@@ -1,0 +1,19 @@
+{
+  "skills": ["lsc-user-story-architect"],
+  "mode": "Veeva to LSC Migration",
+  "sub_domain": "Commercial",
+  "query": "Migrate this Veeva story to Salesforce LSC: 'As a Field Rep, I need a Sample Inventory screen in the Veeva app to view my on-hand sample lots and initiate sample orders, so I can manage inventory and stay PDMA compliant.' Priority P0.",
+  "files": [],
+  "expected_behavior": [
+    "Detects Veeva to LSC Migration mode and reads the veeva-to-lsc-mapping reference before generating",
+    "Translates Veeva terms to LSC-native in the story body (Sample Management/Sample lots -> Product Item / Production Batch Item; Sample Order -> Sample Order/Product Request); no 'Veeva' wording remains in the story body",
+    "Records the original Veeva feature in a 'Veeva Source' header field",
+    "Uses the concrete persona 'Field Sales Representative' — never 'user', 'business user', or 'HCP' as the login persona",
+    "Acceptance Criteria use Pattern A (three explicit GWT lines, one When each) with at least one happy path and one edge case (e.g. expired lot)",
+    "No Apex class names, IP version/step numbers, SOQL, or API field names inside any Given/When/Then/And line",
+    "Includes a '## Technical Implementation (high-level)' section after the ACs that cross-references AC numbers",
+    "Marks greenfield LSC components as 'Proposed' and/or raises a Clarification Question about whether the LSC package/data model is installed (PNM workspace)",
+    "Includes Definition of done checklist and an Estimated Effort table with S/M/L/XL/XXL sizing labelled AI-estimated",
+    "Proposes saving the story under requirements/<PascalCase>.md"
+  ]
+}

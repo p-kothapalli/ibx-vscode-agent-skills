@@ -1,0 +1,12 @@
+.git/**
+.gitignore
+.DS_Store
+**/.DS_Store
+scripts/**
+templates/**
+mcp_server/**
+*.vsix
+node_modules/**
+.vscode-test/**
+ATTRIBUTION.md
+LICENSE
