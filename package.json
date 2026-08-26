@@ -1,8 +1,8 @@
 {
   "name": "ibx-vscode-agent-skills",
   "displayName": "IBX Salesforce Agent Skills",
-  "description": "IBX Salesforce agent skills for GitHub Copilot in VS Code (Apex, OmniStudio, Data Cloud, user stories).",
-  "version": "1.0.0",
+  "description": "IBX overlays on forcedotcom/sf-skills for GitHub Copilot in VS Code (Apex, OmniStudio, Data Cloud).",
+  "version": "1.1.0",
   "publisher": "pkothapalli",
   "license": "SEE LICENSE IN LICENSE",
   "engines": {
@@ -20,13 +20,15 @@
     "apex",
     "ibx"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/p-kothapalli/ibx-vscode-agent-skills.git"
+  },
+  "homepage": "https://github.com/p-kothapalli/ibx-vscode-agent-skills#readme",
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
     "chatSkills": [
-      {
-        "path": "./skills/activating-datacloud/SKILL.md"
-      },
       {
         "path": "./skills/analyzing-omnistudio-dependencies/SKILL.md"
       },
@@ -50,9 +52,6 @@
       },
       {
         "path": "./skills/configuring-code-analyzer/SKILL.md"
-      },
-      {
-        "path": "./skills/connecting-datacloud/SKILL.md"
       },
       {
         "path": "./skills/debugging-apex-logs/SKILL.md"
@@ -100,25 +99,10 @@
         "path": "./skills/handling-sf-data/SKILL.md"
       },
       {
-        "path": "./skills/harmonizing-datacloud/SKILL.md"
-      },
-      {
         "path": "./skills/investigating-agentforce-d360/SKILL.md"
       },
       {
-        "path": "./skills/lsc-user-story-architect/SKILL.md"
-      },
-      {
-        "path": "./skills/orchestrating-datacloud/SKILL.md"
-      },
-      {
-        "path": "./skills/preparing-datacloud/SKILL.md"
-      },
-      {
         "path": "./skills/querying-soql/SKILL.md"
-      },
-      {
-        "path": "./skills/retrieving-datacloud/SKILL.md"
       },
       {
         "path": "./skills/running-apex-tests/SKILL.md"
@@ -128,48 +112,7 @@
       },
       {
         "path": "./skills/salesforce-development/SKILL.md"
-      },
-      {
-        "path": "./skills/segmenting-datacloud/SKILL.md"
-      },
-      {
-        "path": "./skills/user-story-architect/SKILL.md"
-      },
-      {
-        "path": "./skills/verifying-async-reliability/SKILL.md"
-      },
-      {
-        "path": "./skills/verifying-branch-coverage/SKILL.md"
-      },
-      {
-        "path": "./skills/verifying-clarification-log/SKILL.md"
-      },
-      {
-        "path": "./skills/verifying-contract-conformance/SKILL.md"
-      },
-      {
-        "path": "./skills/verifying-cross-validation/SKILL.md"
-      },
-      {
-        "path": "./skills/verifying-governor-safety/SKILL.md"
-      },
-      {
-        "path": "./skills/verifying-parity/SKILL.md"
-      },
-      {
-        "path": "./skills/verifying-practitioner-build/SKILL.md"
-      },
-      {
-        "path": "./skills/verifying-service-boundary/SKILL.md"
-      },
-      {
-        "path": "./skills/verifying-test-adequacy/SKILL.md"
       }
     ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/p-kothapalli/ibx-vscode-agent-skills.git"
-  },
-  "homepage": "https://github.com/p-kothapalli/ibx-vscode-agent-skills#readme"
+  }
 }

@@ -18,16 +18,13 @@
     "code-review-graph": {
       "type": "stdio",
       "command": "code-review-graph",
-      "args": ["serve"]
+      "args": [
+        "serve"
+      ]
     },
     "salesforce-docs": {
       "type": "http",
       "url": "https://api.salesforce.com/sse"
-    },
-    "user-story-architect": {
-      "type": "stdio",
-      "command": "python3",
-      "args": ["${workspaceFolder}/mcp_server/server.py"]
     }
   }
 }

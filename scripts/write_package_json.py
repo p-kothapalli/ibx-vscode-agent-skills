@@ -14,8 +14,8 @@ skills = sorted(
 manifest = {
     "name": "ibx-vscode-agent-skills",
     "displayName": "IBX Salesforce Agent Skills",
-    "description": "IBX Salesforce agent skills for GitHub Copilot in VS Code (Apex, OmniStudio, Data Cloud, user stories).",
-    "version": "1.0.0",
+    "description": "IBX overlays on forcedotcom/sf-skills for GitHub Copilot in VS Code (Apex, OmniStudio, Data Cloud).",
+    "version": "1.1.0",
     "publisher": "pkothapalli",
     "license": "SEE LICENSE IN LICENSE",
     "engines": {"vscode": "^1.100.0"},
@@ -28,6 +28,11 @@ manifest = {
         "apex",
         "ibx",
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/p-kothapalli/ibx-vscode-agent-skills.git",
+    },
+    "homepage": "https://github.com/p-kothapalli/ibx-vscode-agent-skills#readme",
     "activationEvents": [],
     "main": "./extension.js",
     "contributes": {

@@ -21,3 +21,11 @@ Where a skill folder includes `CREDITS.md` or an `upstream` metadata field, that
 
 - https://agentskills.io/specification
 - https://code.visualstudio.com/docs/agent-customization/agent-skills
+
+## Not included
+
+This pack does **not** ship IBX-only skills that have no counterpart in `forcedotcom/sf-skills`:
+
+- User Story Architect (`user-story-architect`, `lsc-user-story-architect`) and its MCP server
+- Practitioner Creation verification skills (`verifying-*`)
+- Retired Data Cloud lifecycle skills (`orchestrating-datacloud`, `connecting-datacloud`, and related) that upstream replaced with `data360-*` / `agentforce-d360-*`

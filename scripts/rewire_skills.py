@@ -17,6 +17,31 @@ SRC = Path("/Users/pkothapalli/Documents/IBXQA/IBXQA/.cursor/skills")
 DEST_ROOT = Path(__file__).resolve().parent.parent
 DEST = DEST_ROOT / "skills"
 
+SKIP_SKILLS = {
+    # IBX-only / not in forcedotcom/sf-skills
+    "user-story-architect",
+    "lsc-user-story-architect",
+    "verifying-async-reliability",
+    "verifying-branch-coverage",
+    "verifying-clarification-log",
+    "verifying-contract-conformance",
+    "verifying-cross-validation",
+    "verifying-governor-safety",
+    "verifying-parity",
+    "verifying-practitioner-build",
+    "verifying-service-boundary",
+    "verifying-test-adequacy",
+    # Older Data Cloud lifecycle skills; upstream now uses data360-* / agentforce-d360-*
+    "orchestrating-datacloud",
+    "connecting-datacloud",
+    "preparing-datacloud",
+    "harmonizing-datacloud",
+    "segmenting-datacloud",
+    "activating-datacloud",
+    "retrieving-datacloud",
+}
+
+
 VSCODE_NOTE = """\
 > **VS Code / Copilot:** Follow the [Agent Skills](https://agentskills.io/specification) standard.
 > Ask clarifying questions as a **numbered list in Copilot Chat** and wait for the user's reply
@@ -183,13 +208,10 @@ def transform_frontmatter(fm: dict, folder_name: str) -> dict:
         "running-apex-tests": "[test class or --tests list]",
         "running-code-analyzer": "[path under force-app/]",
         "deploying-metadata": "[metadata type or source path]",
-        "user-story-architect": "[feature, bug, or epic to story]",
-        "lsc-user-story-architect": "[LSC feature or Veeva migration story]",
         "building-omnistudio-omniscript": "[form or OmniScript name]",
         "building-omnistudio-integration-procedure": "[IP name or orchestration goal]",
         "building-omnistudio-datamapper": "[Extract/Transform/Load and objects]",
         "debugging-apex-logs": "[user, request id, or reproduction]",
-        "verifying-practitioner-build": "[epic, service, or batch under review]",
     }
     if folder_name in hints:
         fm.setdefault("argument-hint", hints[folder_name])
@@ -219,6 +241,8 @@ def copy_tree() -> None:
     DEST.mkdir(parents=True)
     for src_dir in sorted(p for p in SRC.iterdir() if p.is_dir()):
         if not (src_dir / "SKILL.md").exists():
+            continue
+        if src_dir.name in SKIP_SKILLS:
             continue
         dest_dir = DEST / src_dir.name
         shutil.copytree(

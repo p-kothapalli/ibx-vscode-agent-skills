@@ -44,7 +44,7 @@ echo
 echo "Next:"
 echo "  1. In VS Code: Cmd+Shift+P / Ctrl+Shift+P → Developer: Reload Window"
 echo "  2. Open Copilot Chat in Agent mode"
-echo "  3. Type /  and confirm you see /generating-apex, /user-story-architect, …"
+echo "  3. Type /  and confirm you see /generating-apex, /building-omnistudio-omniscript, …"
 echo "  4. Or run Chat: Open Customizations → Skills"
 echo
 echo "Docs: https://code.visualstudio.com/docs/agent-customization/agent-skills"

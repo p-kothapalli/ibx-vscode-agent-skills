@@ -35,12 +35,11 @@ Each skill is a folder with a `SKILL.md` that follows the open [Agent Skills](ht
 
 | Count | Kind |
 |------:|------|
-| 47 | Agent skills under `skills/<name>/SKILL.md` |
-| 3 | Always-on Copilot instruction templates (graph-first, SOQL archive, user-story contract) |
+| 28 | Agent skills under `skills/<name>/SKILL.md` — IBX overlays of [`forcedotcom/sf-skills`](https://github.com/forcedotcom/sf-skills) |
+| 3 | Always-on Copilot instruction templates (IBX conventions, graph-first, SOQL archive) |
 | 1 | VS Code MCP template (Salesforce DX, code-review-graph, Salesforce Docs) |
-| 1 | User Story Architect companion MCP (`mcp_server/`) |
 
-Skills cover Apex/LWC authoring, OmniStudio (IP / DataRaptor / OmniScript / FlexCard / callable Apex), deploy/test/analyzer loops, schema metadata, integrations, Data Cloud + Agentforce, IBX user-story authoring, and the Practitioner Creation verification suite.
+This pack is **only** the upstream Salesforce skills that IBX has layered org conventions onto. IBX-only skills (User Story Architect, Practitioner Creation verifiers) are not included. Folder names keep the IBX/Cursor names (`generating-apex`, …); each maps to a current `forcedotcom/sf-skills` skill (`platform-apex-generate`, …). **Where upstream and IBX rules conflict, the IBX rules win.**
 
 ---
 
@@ -187,7 +186,7 @@ Do all three checks the first time.
 1. Open Copilot Chat.
 2. Click the gear (**Configure Chat**) or run **Chat: Open Customizations**.
 3. Open the **Skills** tab.
-4. You should see names such as `generating-apex`, `building-omnistudio-omniscript`, `user-story-architect`, `salesforce-development`.
+4. You should see names such as `generating-apex`, `building-omnistudio-omniscript`, `querying-soql`, `salesforce-development`.
 
 If the list is empty, see [Troubleshooting](#troubleshooting).
 
@@ -200,7 +199,6 @@ You should see skill commands, for example:
 - `/generating-apex`
 - `/generating-apex-test`
 - `/building-omnistudio-integration-procedure`
-- `/user-story-architect`
 - `/querying-soql`
 - `/running-apex-tests`
 
@@ -214,9 +212,9 @@ Copilot should load `generating-custom-field` (and often `salesforce-development
 
 A second probe:
 
-> Draft a user story for adding a new taxonomy picklist on the Practitioner Participation form.
+> Build an Integration Procedure that calls the Precisely address API following IBX naming.
 
-That should load `user-story-architect` and **ask clarifying questions before writing the story**.
+That should load `building-omnistudio-integration-procedure` and mention `PRM_*` IPs plus the active-version rule.
 
 ---
 
@@ -233,8 +231,6 @@ Describe the work in Agent mode. Copilot matches your wording to each skill’s 
 | “Export these OmniScripts to QA with DataPacks” | `deploying-omnistudio-datapacks` |
 | “Run local tests with coverage on qa-sandbox” | `running-apex-tests` |
 | “Archive this SOQL for Case Manager history” | `querying-soql` |
-| “Write a story for the PAR enhancement” | `user-story-architect` |
-| “Check governor safety on PractitionerBatch” | `verifying-governor-safety` |
 
 ### Explicit slash command
 
@@ -242,7 +238,6 @@ Force a skill when auto-select is wrong or you want only that workflow:
 
 ```
 /generating-apex create PRM_RosterParseService with USER_MODE queries
-/user-story-architect break down the GA county picklist epic
 /running-code-analyzer scan force-app/main/default/classes/PRM_CMAService.cls
 ```
 
@@ -284,7 +279,6 @@ VS Code Copilot reads `.vscode/mcp.json` using a `"servers"` map (not Cursor’s
 | **Salesforce DX** (`@salesforce/mcp`) | Org deploy, retrieve, Apex tests (`run_apex_test`), metadata describe |
 | **code-review-graph** | Callers, callees, impact radius, “does this IP/DR exist?” — **use first** before search |
 | **salesforce-docs** | Official Health Cloud / LSC object and field facts |
-| **user-story-architect** | Structured story tools (optional). Run `pip install -r mcp_server/requirements.txt` first |
 
 `code-review-graph` must be installed and on your `PATH` (`code-review-graph serve`). If it is missing, skills tell Copilot to fall back to workspace search.
 
@@ -307,7 +301,6 @@ Method C copies these for you. For a manual install, copy:
 | `templates/instructions/salesforce-development.instructions.md` | `force-app/**` |
 | `templates/instructions/code-review-graph-first.instructions.md` | whole repo |
 | `templates/instructions/soql-queries-archive.instructions.md` | whole repo |
-| `templates/instructions/user-story-architect.instructions.md` | `requirements/**` |
 
 They are instruction files, not skills: Copilot applies them continuously (by `applyTo` glob) instead of loading them on demand.
 
@@ -335,7 +328,41 @@ Skill **bodies** (IBX overrides, rubrics, field maps) are preserved. Tool-host s
 
 ## Skill catalog
 
+This pack keeps the IBX folder names. Each is an overlay of a skill in [`forcedotcom/sf-skills`](https://github.com/forcedotcom/sf-skills):
+
+| This pack | Upstream `sf-skills` |
+|---|---|
+| `generating-apex` | `platform-apex-generate` |
+| `generating-apex-test` | `platform-apex-test-generate` |
+| `generating-lwc-components` | `experience-lwc-generate` |
+| `building-omnistudio-integration-procedure` | `omnistudio-integration-procedure-generate` |
+| `building-omnistudio-datamapper` | `omnistudio-datamapper-generate` |
+| `building-omnistudio-omniscript` | `omnistudio-omniscript-generate` |
+| `building-omnistudio-flexcard` | `omnistudio-flexcard-generate` |
+| `building-omnistudio-callable-apex` | `omnistudio-callable-apex-generate` |
+| `analyzing-omnistudio-dependencies` | `omnistudio-dependencies-analyze` |
+| `deploying-omnistudio-datapacks` | `omnistudio-datapacks-deploy` |
+| `deploying-metadata` | `platform-metadata-deploy` |
+| `querying-soql` | `platform-soql-query` |
+| `running-apex-tests` | `platform-apex-test-run` |
+| `running-code-analyzer` | `dx-code-analyzer-run` |
+| `configuring-code-analyzer` | `dx-code-analyzer-configure` |
+| `debugging-apex-logs` | `platform-apex-logs-debug` |
+| `generating-custom-field` | `platform-custom-field-generate` |
+| `generating-custom-object` | `platform-custom-object-generate` |
+| `generating-validation-rule` | `platform-validation-rule-generate` |
+| `generating-permission-set` | `platform-permission-set-generate` |
+| `generating-flexipage` | `platform-flexipage-generate` |
+| `generating-flow` | `automation-flow-generate` |
+| `building-sf-integrations` | `integration-connectivity-generate` |
+| `handling-sf-data` | `platform-data-manage` |
+| `getting-datacloud-schema` | `data360-schema-get` |
+| `developing-datacloud-code-extension` | `data360-code-extension-generate` |
+| `investigating-agentforce-d360` | `agentforce-d360-analyze` |
+| `salesforce-development` | IBX umbrella conventions (builder plugin analogue) |
+
 ### Umbrella
+
 
 | Skill | Slash command | Use when |
 |---|---|---|
@@ -392,42 +419,15 @@ Skill **bodies** (IBX overrides, rubrics, field maps) are preserved. Tool-host s
 
 ### Data Cloud and Agentforce
 
-Imported from upstream `forcedotcom/sf-skills`. Start with `orchestrating-datacloud`.
+Upstream counterparts: `data360-schema-get`, `data360-code-extension-generate`, `agentforce-d360-analyze`.
 
-| Skill | Slash command |
-|---|---|
-| `orchestrating-datacloud` | `/orchestrating-datacloud` |
-| `connecting-datacloud` | `/connecting-datacloud` |
-| `preparing-datacloud` | `/preparing-datacloud` |
-| `harmonizing-datacloud` | `/harmonizing-datacloud` |
-| `segmenting-datacloud` | `/segmenting-datacloud` |
-| `activating-datacloud` | `/activating-datacloud` |
-| `retrieving-datacloud` | `/retrieving-datacloud` |
-| `getting-datacloud-schema` | `/getting-datacloud-schema` |
-| `developing-datacloud-code-extension` | `/developing-datacloud-code-extension` |
-| `investigating-agentforce-d360` | `/investigating-agentforce-d360` |
-
-### User stories
-
-| Skill | Slash command | Vertical |
+| Skill | Slash command | Upstream `sf-skills` name |
 |---|---|---|
-| `user-story-architect` | `/user-story-architect` | PNM / Health Cloud / OmniStudio (IBX default) |
-| `lsc-user-story-architect` | `/lsc-user-story-architect` | Life Sciences Cloud |
+| `getting-datacloud-schema` | `/getting-datacloud-schema` | `data360-schema-get` |
+| `developing-datacloud-code-extension` | `/developing-datacloud-code-extension` | `data360-code-extension-generate` |
+| `investigating-agentforce-d360` | `/investigating-agentforce-d360` | `agentforce-d360-analyze` |
 
-### Practitioner Creation verification
-
-| Skill | Slash command |
-|---|---|
-| `verifying-practitioner-build` | `/verifying-practitioner-build` |
-| `verifying-async-reliability` | `/verifying-async-reliability` |
-| `verifying-branch-coverage` | `/verifying-branch-coverage` |
-| `verifying-clarification-log` | `/verifying-clarification-log` |
-| `verifying-contract-conformance` | `/verifying-contract-conformance` |
-| `verifying-cross-validation` | `/verifying-cross-validation` |
-| `verifying-governor-safety` | `/verifying-governor-safety` |
-| `verifying-parity` | `/verifying-parity` |
-| `verifying-service-boundary` | `/verifying-service-boundary` |
-| `verifying-test-adequacy` | `/verifying-test-adequacy` |
+Older Data Cloud lifecycle skills (`orchestrating-datacloud`, `connecting-datacloud`, …) are **not** in current [`forcedotcom/sf-skills`](https://github.com/forcedotcom/sf-skills) and are not shipped here.
 
 ---
 
@@ -444,6 +444,8 @@ git pull origin main
 If you used Method B (settings path to the clone), `git pull` is enough — then reload the window.
 
 If you used Method D, rebuild and reinstall the VSIX after pulling.
+
+If you installed an earlier revision of this pack, run `./scripts/uninstall-user.sh` then `./scripts/install-user.sh --force`. That removes retired IBX-only skills (`user-story-architect`, `verifying-*`, old Data Cloud lifecycle folders) from `~/.copilot/skills/`.
 
 ---
 
@@ -495,14 +497,13 @@ ibx-vscode-agent-skills/
 ├── LICENSE                            ← internal use
 ├── package.json                       ← VS Code extension manifest (chatSkills)
 ├── .vscodeignore
-├── skills/                            ← canonical skill folders (47)
+├── skills/                            ← canonical skill folders (28)
 │   └── generating-apex/SKILL.md
 ├── templates/
 │   ├── mcp.json                       ← VS Code Copilot MCP servers
 │   ├── settings.json                  ← chat.agentSkillsLocations snippet
 │   ├── copilot-instructions.md        ← short always-on IBX briefing
 │   └── instructions/                  ← .github/instructions templates
-├── mcp_server/                        ← User Story Architect FastMCP (optional)
 └── scripts/
     ├── install-user.sh
     ├── install-project.sh
